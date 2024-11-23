@@ -40,15 +40,18 @@ def create_populate_family_tree() -> FamilyTree:
     
     # Partner second generation
     family_tree.partner(lester, jedward)
-    family_tree.partner(mary, john)
+    family_tree.partner(jenna, john)
     
     #endregion
     
     #region Third generation
-    # John and Mary's children
-    jackson: Person = family_tree.add_person(Person("Jackson", "Wax", SimplifiedSex.MALE, mary, john))
-    Wirral: Person = family_tree.add_person(Person("Wirral", "Wax", SimplifiedSex.FEMALE, mary, john))
+    # John and Jenna's children
+    jackson: Person = family_tree.add_person(Person("Jackson", "Wax", SimplifiedSex.MALE, jenna, john))
+    Wirral: Person = family_tree.add_person(Person("Wirral", "Wax", SimplifiedSex.FEMALE, jenna, john))
     Paxton: Person = family_tree.add_person(Person("Paxton", "Wax", SimplifiedSex.MALE, mary, john))
+    
+    # Harry and Mary's children
+    luke: Person = family_tree.add_person(Person("Bexton", "Wax", SimplifiedSex.MALE, mary, harry))
     
     #endregion
     return family_tree
