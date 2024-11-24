@@ -3,8 +3,11 @@ from FamilyTree import FamilyTree
 from Person import Person
 from SimplifiedSex import SimplifiedSex
 
-"""Create the family tree"""
 def create_populated_family_tree() -> FamilyTree:
+    """
+        Create the family tree and populate it with data (loader)
+        :return: the populated family tree
+    """
     # Create the empty family tree
     family_tree: FamilyTree = FamilyTree()
 

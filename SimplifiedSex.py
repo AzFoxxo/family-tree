@@ -1,6 +1,8 @@
 from enum import Enum
 
-"""SimplifiedSex Enum contains the simplified binary sex for a person (gender identity not included or intersex classification)"""
 class SimplifiedSex(Enum):
+    """
+        SimplifiedSex enum contains the simplified binary sex for a person (this should not be treated as their gender and does not account for intersex people either) 
+    """
     MALE : str = "male"
     FEMALE : str = "female"

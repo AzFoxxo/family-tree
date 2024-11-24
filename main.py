@@ -14,7 +14,7 @@ if __name__ == '__main__':
         # List all people
         print("-" * 75)
         for person in family_tree.people:
-            print(f"{family_tree.get_reference_from_person(person)+1}: {person.fname} {person.lname}")
+            print(f"{family_tree.get_reference_from_person(person)+1}: {person.first_name} {person.last_name}")
         print("-" * 75)
         
         # Get the person
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         person: Person = family_tree.get_person_from_reference(person_number)
         
         # Show basic information about the person
-        print(f"{person.fname} {person.lname} is {person.sex.value}.")
+        print(f"{person.first_name} {person.last_name} is {person.sex.value}.")
         print(f"Their spouse is {person.spouse if person.spouse is not None else 'not set or are not yet married'}.")
         
         # Print parents' names
@@ -61,7 +61,7 @@ if __name__ == '__main__':
             if len(siblings[0]) > 0:
                 print("They have these siblings:")
                 for sibling in siblings[0]:
-                    print(f" - {sibling.fname} {sibling.lname}")
+                    print(f" - {sibling.first_name} {sibling.last_name}")
             else:
                 print("No full siblings found.")
                 
@@ -69,7 +69,7 @@ if __name__ == '__main__':
             if len(siblings[1]) > 0:
                 print("They have the following half siblings:")
                 for sibling in siblings[1]:
-                    print(f" - {sibling.fname} {sibling.lname}")
+                    print(f" - {sibling.first_name} {sibling.last_name}")
             else:
                 print("No half siblings found.")
                 
@@ -137,7 +137,7 @@ if __name__ == '__main__':
         combined_age: int = 0
         deceased_people: List[Person] = family_tree.get_deceased()
         number_of_deceased: int = len(deceased_people)
-        combined_age = sum([person.DOD.year - person.DOB.year for person in deceased_people]) / number_of_deceased
+        combined_age = sum([person.date_of_death.year - person.date_of_birth.year for person in deceased_people]) / number_of_deceased
         print(f"Of all {number_of_deceased} deceased people, the average age at which someone dies is {combined_age:.0f} years.")        
         
         # Find of the number of children for each person and overall total
