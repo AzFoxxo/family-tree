@@ -133,4 +133,16 @@ if __name__ == '__main__':
         combined_age = sum([person.DOD.year - person.DOB.year for person in deceased_people]) / number_of_deceased
         print(f"Of all {number_of_deceased} deceased people, the average age at which someone dies is {combined_age:.0f} years.")        
         
+        # Find of the number of children for each person and overall total
+        print("Number of children:")
+        number_of_children: int = 0
+        number_of_children_in_whole_tree: int = 0
+        for i in range(len(family_tree.people)):
+            number_of_children = len(family_tree.get_children(family_tree.people[i]))
+            number_of_children_in_whole_tree += number_of_children
+            children_plurality = "children" if number_of_children != 1 else "child"
+            print(f"{family_tree.people[i]} has {number_of_children} {children_plurality}.")
+            
+        print(f"The average number of children is {number_of_children_in_whole_tree / len(family_tree.people):.4f}.")
+        
         break
