@@ -1,7 +1,6 @@
 from typing import List, Optional, Tuple
 from Person import Person
 
-
 """FamilyTree class stores the family tree and methods to find relationships within it"""
 class FamilyTree:
     def __init__(self):
@@ -13,7 +12,7 @@ class FamilyTree:
         return person
 
     """Partner a person with another person - mark as spouses"""
-    def partner(self, person1: Person, person2: Person) -> None:
+    def set_partner(self, person1: Person, person2: Person) -> None:
         person1.spouse = person2
         person2.spouse = person1
         
@@ -90,7 +89,7 @@ class FamilyTree:
             
         # Remove duplicate entries
         grandchildren = list(dict.fromkeys(grandchildren))
-            
+        
         return grandchildren
     
     """Find all the cousins of them"""

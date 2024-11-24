@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
 from typing import List, Optional, Tuple
-from CreateTree import create_populate_family_tree
+from CreateTree import create_populated_family_tree
 from FamilyTree import FamilyTree
 from Person import Person
 
 if __name__ == '__main__':
-    family_tree : FamilyTree = create_populate_family_tree()
+    family_tree : FamilyTree = create_populated_family_tree()
     
     while True:
         print("Enter the number of the person to find their relationships:")
@@ -34,10 +34,10 @@ if __name__ == '__main__':
             continue
         # Keyboard interrupt e.g. Control + C
         except KeyboardInterrupt:
-             exit(-1)
+            exit(-1)
         
         # Get the person from the person reference
-        person = family_tree.get_person_from_reference(person_number)
+        person: Person = family_tree.get_person_from_reference(person_number)
         
         # Show basic information about the person
         print(f"{person.fname} {person.lname} is {person.sex.value}.")
