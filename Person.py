@@ -12,10 +12,12 @@ class Person:
         self.mother: Optional[Self] = mother
         self.father: Optional[Self] = father
         self.spouse: Optional[Self] = None
+        self.DOD: Optional[datetime.date]
     
     # Print the name of the person when Person is printed
     def __str__(self) -> str:
         return f"{self.fname} {self.lname}"
     
-    """Set the birthday of a person"""
-    
+    """Mark as a person as deceased"""
+    def set_deceased(self, DOD: datetime.date) -> None:
+        self.DOD = DOD

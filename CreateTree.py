@@ -21,6 +21,12 @@ def create_populated_family_tree() -> FamilyTree:
     eve: Person = family_tree.add_person(Person("Eve", "Knotberry", SimplifiedSex.FEMALE, datetime.date(1924, 6, 6)))
     family_tree.set_partner(stew, eve)
     
+    # Mark deceased people
+    adam.set_deceased(datetime.date(1991, 4, 12))
+    jasmine.set_deceased(datetime.date(1994, 11, 3))
+    eve.set_deceased(datetime.date(2003, 2, 20))
+    
+    
     #endregion
     
     #region Second generation
