@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from typing import Optional
+from typing import List, Optional, Tuple
 from CreateTree import create_populate_family_tree
 from FamilyTree import FamilyTree
 from Person import Person
@@ -34,13 +34,14 @@ if __name__ == '__main__':
             continue
         # Keyboard interrupt e.g. Control + C
         except KeyboardInterrupt:
-            break
+             exit(-1)
         
         # Get the person from the person reference
         person = family_tree.get_person_from_reference(person_number)
         
         # Show basic information about the person
         print(f"{person.fname} {person.lname} is {person.sex.value}.")
+        print(f"Their spouse is {person.spouse if person.spouse is not None else 'not set or are not yet married'}.")
         
         # Print parents' names
         mother: Optional[Person]
@@ -49,12 +50,12 @@ if __name__ == '__main__':
         print(f"Their mother is {mother if mother is not None else "unknown"} and their father is {father if father is not None else "unknown"}.")
         
         # Print the grandparents's names
-        grandparents: tuple[tuple[Optional[Person], Optional[Person]], tuple[Optional[Person], Optional[Person]]] = family_tree.get_grandparents(person)
+        grandparents: Tuple[Tuple[Optional[Person], Optional[Person]], Tuple[Optional[Person], Optional[Person]]] = family_tree.get_grandparents(person)
         print(f"Their mum's grandparents are {grandparents[0][0] if grandparents[0][0] is not None else 'unknown'} and {grandparents[0][1] if grandparents[0][1] is not None else 'unknown'}.")
         print(f"Their dad's grandparents are {grandparents[1][0] if grandparents[1][0] is not None else 'unknown'} and {grandparents[1][1] if grandparents[1][1] is not None else 'unknown'}.")
         
         # Print the siblings' names
-        siblings: Optional[tuple[list[Person], list[Person]]] = family_tree.get_siblings(person, True)
+        siblings: Tuple[List[Person], List[Person]] = family_tree.get_siblings(person, True)
         if siblings is not None:
             # Full siblings
             if len(siblings[0]) > 0:
@@ -73,7 +74,7 @@ if __name__ == '__main__':
                 print("No half siblings found.")
                 
         # Display the person's children
-        children: Optional[list[Person]] = family_tree.get_children(person)
+        children: List[Person] = family_tree.get_children(person)
         if children is not None:
             print("They have the following children:")
             for child in children:
@@ -81,13 +82,22 @@ if __name__ == '__main__':
         else:
             print("No children found.")
             
-        # Display the person's children
-        grandchildren: Optional[list[Person]] = family_tree.get_grandchildren(person)
+        # Display the person's grandchildren
+        grandchildren: List[Person] = family_tree.get_grandchildren(person)
         if children is not None:
             print("They have the following grandchildren:")
             for grandchild in grandchildren:
                 print(f" - {grandchild}")
         else:
             print("No grandchildren found.")
+            
+        # Display the person's cousins
+        cousins: List[Person] = family_tree.get_cousins(person)
+        if cousins is not None:
+            print("They have these cousins:")
+            for cousin in cousins:
+                print(f" - {cousin}")
+        else:
+            print("No cousins found.")
         
         break

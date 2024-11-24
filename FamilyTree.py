@@ -51,7 +51,7 @@ class FamilyTree:
        
     
     """Get siblings of a person"""
-    def get_siblings(self, person: Person, include_half_siblings: bool = False) -> Optional[Tuple[List[Person], List[Person]]]:
+    def get_siblings(self, person: Person, include_half_siblings: bool = False) -> Tuple[List[Person], List[Person]]:
         siblings = []
         half_siblings = []
         mother, father = self.get_parents(person)
@@ -71,8 +71,8 @@ class FamilyTree:
     
     
     """Get the children"""
-    def get_children(self, person: Person) -> Optional[List[Person]]:
-        children: Optional[List[Person]] = []
+    def get_children(self, person: Person) -> List[Person]:
+        children: List[Person] = []
         
         for i in self.people:
             if i.mother == person or i.father == person:
@@ -81,12 +81,27 @@ class FamilyTree:
         return children
     
     """Get the grandchildren"""
-    def get_grandchildren(self, person: Person) -> Optional[List[Person]]:
-        grandchildren: Optional[List[Person]] = []
-        children: Optional[List[Person]] = self.get_children(person)
+    def get_grandchildren(self, person: Person) -> List[Person]:
+        grandchildren: List[Person] = []
+        children: List[Person] = self.get_children(person)
         
         for child in children:
             grandchildren.extend(self.get_children(child))
             
+        # Remove duplicate entries
+        grandchildren = list(dict.fromkeys(grandchildren))
+            
         return grandchildren
     
+    """Find all the cousins of them"""
+    def get_cousins(self, person: Person) -> List[Person]:
+        parents = self.get_parents(person)
+        mother = parents[0]
+        father = parents[1]
+        aunts_and_uncles = self.get_siblings(mother) + self.get_siblings(father) 
+        cousins = []
+        
+        for aunt_or_uncle in aunts_and_uncles:
+            cousins += self.get_children(aunt_or_uncle)
+        
+        return cousins
