@@ -1,3 +1,4 @@
+import os
 from typing import List, Optional, Tuple
 from FamilyTree import FamilyTree
 from CreateTree import create_populated_family_tree
@@ -37,7 +38,7 @@ class ConsoleMenu:
         """
             Print a divider to the console
         """
-        print("-" * 75)
+        print("-" * os.get_terminal_size().columns)
         
     def select_current_family_member(self) -> Person:
         """
