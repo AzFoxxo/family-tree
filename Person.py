@@ -8,7 +8,7 @@ class Person:
         self.fname: str = fname
         self.lname: str = lname
         self.sex : SimplifiedSex = sex
-        self.DOB: datetime.date = None
+        self.DOB: datetime.date = DOB
         self.mother: Optional[Self] = mother
         self.father: Optional[Self] = father
         self.spouse: Optional[Self] = None

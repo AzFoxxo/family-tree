@@ -99,5 +99,32 @@ if __name__ == '__main__':
                 print(f" - {cousin}")
         else:
             print("No cousins found.")
+            
+        # Display the birthdays in order for everyone
+        birthdays: List[Tuple[Person, int, int]] = family_tree.get_birthdays()
+        
+        # Sort the birthdays by month and day
+        birthdays.sort(key=lambda x: (x[1], x[2]))
+        
+        # If two or more people share a birthday. combine them
+        combined: List[str] = []
+        previous_birthday: Tuple[int, int] = (-1, -1)
+        for i in range(len(birthdays)):
+            # Check is previous birthday
+            if previous_birthday == (birthdays[i][1], birthdays[i][2]):
+                combined[-1] += f", {birthdays[i][0]}"
+            else:
+                # Add the person and their birthday
+                combined.append(f"{birthdays[i][0]}: {birthdays[i][1]}/{birthdays[i][2]}")
+            
+            # Update previous birthday 
+            previous_birthday = (birthdays[i][2], birthdays[i][1])
+            
+        # Print the combined birthdays
+        print("Birthday calendar:")
+        for birthday in combined:
+            print(birthday)
+        
+        
         
         break

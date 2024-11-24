@@ -1,3 +1,4 @@
+import datetime
 from typing import List, Optional, Tuple
 from Person import Person
 
@@ -104,3 +105,11 @@ class FamilyTree:
             cousins += self.get_children(aunt_or_uncle)
         
         return cousins
+    
+    """Return a list of everyone's birthdays"""
+    def get_birthdays(self) -> List[Tuple[Person, int, int]]:
+        birthdays: List[Tuple[Person, int, int]] = []
+        for i in self.people:
+            birthdays.append((i, i.DOB.month, i.DOB.day))
+            
+        return birthdays
