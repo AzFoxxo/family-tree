@@ -93,12 +93,31 @@ class FamilyTree:
         
         return grandchildren
     
+    """Find aunts or uncles"""
+    def get_aunts_and_uncles(self, person: Person) -> List[Person]:
+        parents: Tuple[Optional[Person], Optional[Person]] = self.get_parents(person)
+        mother: Person = parents[0]
+        father: Person = parents[1]
+        aunts_and_uncles = []
+        
+        # Get mother's siblings
+        if mother is not None:
+            for i in self.get_siblings(mother, True)[0]:
+                aunts_and_uncles.append(i)
+        
+        # Get father's siblings
+        if father is not None:
+            for i in self.get_siblings(father, True)[0]:
+                aunts_and_uncles.append(i)
+                    
+        return aunts_and_uncles
+    
     """Find all the cousins of them"""
     def get_cousins(self, person: Person) -> List[Person]:
-        parents = self.get_parents(person)
-        mother = parents[0]
-        father = parents[1]
-        aunts_and_uncles = self.get_siblings(mother) + self.get_siblings(father) 
+        parents: Tuple[Optional[Person], Optional[Person]] = self.get_parents(person)
+        mother: Person = parents[0]
+        father: Person = parents[1]
+        aunts_and_uncles: List[Person] = self.get_aunts_and_uncles(person)
         cousins = []
         
         for aunt_or_uncle in aunts_and_uncles:

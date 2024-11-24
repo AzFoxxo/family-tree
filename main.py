@@ -91,6 +91,13 @@ if __name__ == '__main__':
         else:
             print("No grandchildren found.")
             
+        # Display the person's aunts and uncles
+        aunts_and_uncles: List[Person] = family_tree.get_aunts_and_uncles(person)
+        if aunts_and_uncles is not None:
+            print("They have the following aunts and uncles:")
+            for aunt_or_uncle in aunts_and_uncles:
+                print(f" - {aunt_or_uncle}")
+            
         # Display the person's cousins
         cousins: List[Person] = family_tree.get_cousins(person)
         if cousins is not None:
