@@ -124,7 +124,13 @@ if __name__ == '__main__':
         print("Birthday calendar:")
         for birthday in combined:
             print(birthday)
-        
-        
+            
+            
+        # Calculate the average age of a person
+        combined_age: int = 0
+        deceased_people: List[Person] = family_tree.get_deceased()
+        number_of_deceased: int = len(deceased_people)
+        combined_age = sum([person.DOD.year - person.DOB.year for person in deceased_people]) / number_of_deceased
+        print(f"Of all {number_of_deceased} deceased people, the average age at which someone dies is {combined_age:.0f} years.")        
         
         break

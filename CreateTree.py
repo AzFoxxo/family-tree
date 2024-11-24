@@ -26,7 +26,6 @@ def create_populated_family_tree() -> FamilyTree:
     jasmine.set_deceased(datetime.date(1994, 11, 3))
     eve.set_deceased(datetime.date(2003, 2, 20))
     
-    
     #endregion
     
     #region Second generation
@@ -55,4 +54,5 @@ def create_populated_family_tree() -> FamilyTree:
     Paxton: Person = family_tree.add_person(Person("Paxton", "Knotberry-Wax", SimplifiedSex.MALE, datetime.date(1976, 5, 3), jenna, john))
     
     #endregion
+    
     return family_tree

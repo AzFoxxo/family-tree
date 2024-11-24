@@ -113,3 +113,12 @@ class FamilyTree:
             birthdays.append((i, i.DOB.month, i.DOB.day))
             
         return birthdays
+    
+    """Return a list of deceased people"""
+    def get_deceased(self) -> List[Person]:
+        deceased: List[Person] = []
+        for i in self.people:
+            if i.DOD is not None:
+                deceased.append(i)
+                
+        return deceased
