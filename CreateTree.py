@@ -34,6 +34,12 @@ def create_populated_family_tree() -> FamilyTree:
     family_tree.add_person(john)
     family_tree.add_person(jeanette)
     family_tree.set_partner(john, jeanette)
+    
+    # Mark people as deceased
+    john.set_deceased(datetime.date(1990, 3, 23))
+    jeanette.set_deceased(datetime.date(1990, 3, 23))
+    ginny.set_deceased(datetime.date(1960, 7, 2))
+    
     #endregion
     
     #region Generation #2
