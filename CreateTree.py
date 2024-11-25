@@ -91,7 +91,8 @@ def create_populated_family_tree() -> FamilyTree:
     #endregion
     
     #region Generation #4
-    family_tree.add_person(Person("Cornelia", "Emmersohn", SimplifiedSex.FEMALE, datetime.date(2015, 3, 23), angie, james))
-    family_tree.add_person(Person("Otto", "Emmersohn", SimplifiedSex.MALE, datetime.date(2010, 3, 23), bethany, clyde))
+    cornelia: Person = family_tree.add_person(Person("Cornelia", "Emmersohn", SimplifiedSex.FEMALE, datetime.date(2015, 3, 23), angie, james))
+    otto: Person = family_tree.add_person(Person("Otto", "Emmersohn", SimplifiedSex.MALE, datetime.date(2010, 3, 23), bethany, clyde))
+    family_tree.set_partner(cornelia, otto)
     
     return family_tree
