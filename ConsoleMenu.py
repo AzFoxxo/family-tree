@@ -349,24 +349,23 @@ class ConsoleMenu:
         # Sort the birthdays by month and day
         birthdays.sort(key=lambda x: (x[1], x[2]))
         
-        # If two or more people share a birthday. combine them
-        combined: List[str] = []
-        previous_birthday: Tuple[int, int] = (-1, -1)
-        for i in range(len(birthdays)):
-            # Check is previous birthday
-            if previous_birthday == (birthdays[i][1], birthdays[i][2]):
-                combined[-1] += f", {birthdays[i][0]}"
+        # If more than one person was born on a day, combine the lines together <month>/<day>: <person>, <person>, <person>.
+        current_birthday: Tuple[int, int] = (-1, -1)
+        combined_birthday: List[str] = []
+        for birthday in birthdays:
+            # Add the date to the combined birthdays
+            if current_birthday != (birthday[1], birthday[2]):
+                combined_birthday.append(f"{birthday[1]}/{birthday[2]}: {birthday[0]}")
             else:
-                # Add the person and their birthday
-                combined.append(f"{birthdays[i][1]}/{birthdays[i][2]}: {birthdays[i][0]}")
+                combined_birthday[-1] += f", {birthday[0]}"
             
-            # Update previous birthday 
-            previous_birthday = (birthdays[i][2], birthdays[i][1])
+            # Update current birthday
+            current_birthday = (birthday[1], birthday[2])
             
-        # Print the combined birthdays
-        print("Birthday calendar:")
-        for birthday in combined:
-            print(birthday)
+        # Print birthdays
+        print("Calendar of birthdays:")
+        for birthday in combined_birthday:
+            print(f"{birthday}.")
             
         ConsoleMenu.print_divider()
         
