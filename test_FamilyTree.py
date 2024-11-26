@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from typing import Optional, Tuple
+from typing import List, Optional, Tuple
 import unittest
 
 from CreateTree import create_populated_family_tree
@@ -13,10 +13,10 @@ class FamilyTreeTesting(unittest.TestCase):
         self.family_tree: FamilyTree = create_populated_family_tree()
     
     def test_get_parents(self):
-        # Adam Elderson-Copper
+        # Test Adam Elderson-Copper
         self.assertEqual(self.family_tree.get_parents(self.family_tree.get_person_from_reference(0)), (None, None))
         
-        # Bexton Elderson-Copper
+        # Test Bexton Elderson-Copper
         result: Tuple[Optional[Person], Optional[Person]] = self.family_tree.get_parents(self.family_tree.get_person_from_reference(9))
         if result[0] is not None:
             self.assertEqual(result[0].first_name, "Amber")
@@ -27,6 +27,23 @@ class FamilyTreeTesting(unittest.TestCase):
         pass
     
     def test_get_siblings(self):
+        # Test Carol Boulder
+        siblings: Tuple[List[Person], List[Person]] = self.family_tree.get_siblings(self.family_tree.get_person_from_reference(2))
+        self.assertEqual(len(siblings[0]), 0)
+        self.assertEqual(len(siblings[1]), 0)
+        
+        # Test Angel Eyre
+        siblings = self.family_tree.get_siblings(self.family_tree.get_person_from_reference(19))
+        self.assertEqual(len(siblings[0]), 1)
+        self.assertEqual(len(siblings[1]), 0)
+
+        # Test Angel Eyre - Include half siblings
+        siblings = self.family_tree.get_siblings(self.family_tree.get_person_from_reference(19), True)
+        self.assertEqual(len(siblings[0]), 1)
+        self.assertEqual(len(siblings[1]), 1)
+        
+        
+        
         pass
     
     def test_get_children(self):
