@@ -60,10 +60,22 @@ class FamilyTreeTesting(unittest.TestCase):
         self.assertEqual(len(children), 1)
     
     def test_get_cousins(self):
-        pass
+        # Test Cornelia Emmersohn
+        cousins: List[Person] = self.family_tree.get_cousins(self.family_tree.get_person_from_reference(20))
+        self.assertEqual(len(cousins), 0)
+        
+        # Test Lester Elderson-Copper
+        cousins = self.family_tree.get_cousins(self.family_tree.get_person_from_reference(1))
+        self.assertEqual(len(cousins), 0)
     
     def test_get_aunts_and_uncles(self):
-        pass
+        # Test Cornelia Emmersohn
+        aunts_and_uncles: List[Person] = self.family_tree.get_aunts_and_uncles(self.family_tree.get_person_from_reference(23))
+        self.assertEqual(len(aunts_and_uncles), 0)
+        
+        # Test Bexton Elderson-Copper
+        aunts_and_uncles = self.family_tree.get_aunts_and_uncles(self.family_tree.get_person_from_reference(9))
+        self.assertEqual(len(aunts_and_uncles), 0)
     
     def test_grandchildren(self):
         # Test Adam Elderson-Copper
