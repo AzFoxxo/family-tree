@@ -66,7 +66,13 @@ class FamilyTreeTesting(unittest.TestCase):
         pass
     
     def test_grandchildren(self):
-        pass
+        # Test Adam Elderson-Copper
+        grandchildren: List[Person] = self.family_tree.get_grandchildren(self.family_tree.get_person_from_reference(0))
+        self.assertEqual(grandchildren, [])
+        
+        # Test Lester Elderson-Copper
+        grandchildren = self.family_tree.get_grandchildren(self.family_tree.get_person_from_reference(1))
+        self.assertEqual(len(grandchildren), 1)
     
     def test_get_deceased(self):
         # Test number of deceased
