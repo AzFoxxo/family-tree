@@ -69,7 +69,9 @@ class FamilyTreeTesting(unittest.TestCase):
         pass
     
     def test_get_deceased(self):
-        pass
+        # Test number of deceased
+        self.assertEqual(len(self.family_tree.get_deceased()), 3)
     
     def test_get_birthdays(self):
-        pass
+        # Test number of birthdays
+        self.assertEqual(len(self.family_tree.get_birthdays()), 24)
