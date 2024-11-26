@@ -49,13 +49,15 @@ class FamilyTreeTesting(unittest.TestCase):
         siblings = self.family_tree.get_siblings(self.family_tree.get_person_from_reference(19), True)
         self.assertEqual(len(siblings[0]), 1)
         self.assertEqual(len(siblings[1]), 1)
-        
-        
-        
-        pass
     
     def test_get_children(self):
-        pass
+        # Test Otto Emmersohn
+        children: List[Person] = self.family_tree.get_children(self.family_tree.get_person_from_reference(23))
+        self.assertEqual(len(children), 0)
+        
+        # Test Bexton Elderson-Copper
+        children = self.family_tree.get_children(self.family_tree.get_person_from_reference(9))
+        self.assertEqual(len(children), 1)
     
     def test_get_cousins(self):
         pass
