@@ -12,5 +12,5 @@ The family tree is created within the CreateTree loader function, create new peo
 ## Run tests
 To run the tests on the core functionality within the FamilyTree class, run the following command:
 ```sh
-python -m unittest test_family_tree.py
+python -m unittest test_FamilyTree.py
 ```
