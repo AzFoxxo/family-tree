@@ -24,8 +24,16 @@ class FamilyTreeTesting(unittest.TestCase):
             self.assertEqual(result[1].first_name, "Lester")
             
     def test_get_grandparents(self):
-        pass
-    
+        # Test Cornelia Emmersohn
+        grandparents: Tuple[Tuple[Optional[Person], Optional[Person]], Tuple[Optional[Person], Optional[Person]]] = self.family_tree.get_grandparents(self.family_tree.get_person_from_reference(22))
+        self.assertNotEqual(grandparents[0], (None, None))
+        self.assertNotEqual(grandparents[1], (None, None))
+        
+        # Test Lester Elderson-Copper
+        grandparents: Tuple[Tuple[Optional[Person], Optional[Person]], Tuple[Optional[Person], Optional[Person]]] = self.family_tree.get_grandparents(self.family_tree.get_person_from_reference(1))
+        self.assertEqual(grandparents[0], (None, None))
+        self.assertEqual(grandparents[1], (None, None))
+        
     def test_get_siblings(self):
         # Test Carol Boulder
         siblings: Tuple[List[Person], List[Person]] = self.family_tree.get_siblings(self.family_tree.get_person_from_reference(2))
