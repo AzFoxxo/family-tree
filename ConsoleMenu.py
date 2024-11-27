@@ -1,3 +1,10 @@
+# This class is responsible for interacting with the family tree and printing the output to the console
+# A brief breakdown of class functionality:
+# This class contains a menu loop from which it asks the user for the following:
+# Family member to view details
+# Option to perform which calls one of the 9 methods e.g. show_parents
+# If the user wants to continue or quit
+
 import os
 from typing import List, Optional, Tuple
 from FamilyTree import FamilyTree

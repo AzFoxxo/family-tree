@@ -1,3 +1,9 @@
+# This is the Person class which represents everyone in the family tree
+# This class functions mainly a record for person, their basic details and parental relationship
+# This class should not include any sidewards relationships
+# Only methods that act on a singular person should be included here
+# Code which operates on multiple people should be placed inside FamilyTree.py
+
 import datetime
 from typing import Optional, Self
 import SimplifiedSex

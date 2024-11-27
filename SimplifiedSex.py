@@ -1,3 +1,6 @@
+# This class is extremely simple
+# It contains the enum which represents the sex of a person
+
 from enum import Enum
 
 class SimplifiedSex(Enum):

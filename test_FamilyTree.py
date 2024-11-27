@@ -1,5 +1,14 @@
 #!/usr/bin/python
 
+# This class contains a number of basic tests for core functionality of the FamilyTree class
+# Using the the unittest library in Python
+# Runs the default family tree scenario defined in CreateTree.py
+# Performs tests on get methods from FamilyTree class
+
+if __name__ == "__main__":
+    print("Please run me via \"unittest\". See readme for details.")
+
+
 from typing import List, Optional, Tuple
 import unittest
 

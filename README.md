@@ -2,6 +2,9 @@
 
 Family Tree is a command line application that allows the user to view relationships of a family tree.
 
+<!-- Add preview.png -->
+![Preview of the CLI with a welcome message and prompting the user for a person](preview.png)
+
 ## Setup
 
 1. Clone the repo

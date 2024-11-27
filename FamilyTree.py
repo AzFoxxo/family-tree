@@ -1,3 +1,10 @@
+# This class contains all the functionality required for relationship lookups,
+# Adding people to the family tree,
+# Setting spouses of two people
+# This class should not contain any logic not related to manipulating the family tree
+# Or looking up relationships in the family tree
+# User facing code e.g. printing to the terminal, should be carried out in ConsoleMenu
+
 import datetime
 from typing import List, Optional, Tuple
 from Person import Person

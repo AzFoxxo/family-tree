@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+# This file is the entry point for the program
+# It should not contain any code except that responsible
+# for creating the console menu and entering the loop
+
 from ConsoleMenu import ConsoleMenu
 
 def console_interface_entry() -> None:
