@@ -78,21 +78,32 @@ class FamilyTree:
             :return: the siblings of the person in the format (full siblings, half siblings)
         """
         siblings = []
-        half_siblings = []
+        
+        # Get parents
         mother, father = self.get_parents(person)
         
-        # Check for siblings
-        for i in self.people:
-            # Get all full siblings
-            if i.mother == mother and i.father == father and i.mother != None and i.father != None:
-                if i is not person:
-                    siblings.append(i)
-            # Get all half siblings
-            elif include_half_siblings and (i.mother == mother or i.father == father):
-                if i is not person:
-                    half_siblings.append(i)
+        # Get parent's children - siblings
+        siblings = self.get_children(mother)
+        siblings += self.get_children(father)
+        
+        # Remove duplicate entries
+        siblings = list(dict.fromkeys(siblings))
+        
+        full_siblings = []
+        half_siblings = []
+        
+        # Remove self from the list
+        if person in siblings:
+            siblings.remove(person)
+        
+        # Add to the correct list
+        for sibling in siblings:
+            if (sibling.mother == mother and sibling.mother != None) and (sibling.father == father and sibling.father != None):
+                full_siblings.append(sibling)
+            elif include_half_siblings and ((sibling.mother == mother and sibling.mother != None) or (sibling.father == father and sibling.father != None)):
+                half_siblings.append(sibling)
                     
-        return siblings, half_siblings
+        return full_siblings, half_siblings
     
     
     def get_children(self, person: Person) -> List[Person]:
@@ -103,8 +114,9 @@ class FamilyTree:
         """
         children: List[Person] = []
         
+        # Find all children who share the faster or mother
         for i in self.people:
-            if i.mother == person or i.father == person:
+            if (i.mother == person and i.mother is not None) or (i.father == person and i.father is not None):
                 children.append(i)
                 
         return children
