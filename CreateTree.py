@@ -95,4 +95,6 @@ def create_populated_family_tree() -> FamilyTree:
     otto: Person = family_tree.add_person(Person("Otto", "Emmersohn", SimplifiedSex.MALE, datetime.date(2010, 3, 23), bethany, clyde))
     family_tree.set_partner(cornelia, otto)
     
+    ethan = family_tree.add_person(Person("Ethan", "Eyre", SimplifiedSex.MALE, datetime.date(2015, 3, 23), None, dylan))
+    
     return family_tree

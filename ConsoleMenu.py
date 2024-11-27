@@ -257,6 +257,7 @@ class ConsoleMenu:
             
         # Extended family
         if extended_family_too:
+            print("Extended family:")
             aunts_and_uncles: List[Person] = self.family_tree.get_aunts_and_uncles(person)
             cousins: List[Person] = self.family_tree.get_cousins(person)
             
