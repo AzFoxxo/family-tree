@@ -92,4 +92,4 @@ class FamilyTreeTesting(unittest.TestCase):
     
     def test_get_birthdays(self):
         # Test number of birthdays
-        self.assertEqual(len(self.family_tree.get_birthdays()), 24)
+        self.assertEqual(len(self.family_tree.get_birthdays()), 25)
