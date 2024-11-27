@@ -28,7 +28,7 @@ class ConsoleMenu:
             person: Person = self.select_current_family_member()
             
             # Select an option to perform
-            self.select_option_to_perform_person(person)
+            self.select_option_to_perform_the_person(person)
             
             # Show continue prompt
             self.prompt_continuation()
@@ -76,7 +76,7 @@ class ConsoleMenu:
                 
         return self.family_tree.get_person_from_reference(person_number)
     
-    def select_option_to_perform_person(self, person: Person) -> None:
+    def select_option_to_perform_the_person(self, person: Person) -> None:
         """
             Select the option to perform on the person
             :param person: the person to perform the option on
